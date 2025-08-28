@@ -2,9 +2,9 @@
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/120888) 
 
-#### [성능 요약](#-성능-요약)
-#### [문제 설명](#-문제-설명)
-#### [문제 풀이](#-문제-풀이)
+#### [1. 성능 요약](#성능-요약)
+#### [2. 문제 설명](#문제-설명)
+#### [3. 내 코드](#내-코드)
 
 <hr>
 
@@ -79,7 +79,7 @@
 <br>
 <br>
 
-### 문제 풀이
+### 내 코드
 ````
 class Solution {
     public String solution(String my_string) {
@@ -95,8 +95,43 @@ class Solution {
     }
 }
 ````
-charAt()으로 문자열을 하나씩 저장한다.
+charAt()으로 문자열을 하나씩 저장한다.<br>
 answer에 str이 포함되어 있는지 확인하고 포함되어 있지 않다면 answer에 저장한다.
+
+<br>
+<br>
+
+### 다른 풀이
+````
+class Solution {
+    public String solution(String my_string) {
+        String answer = "";
+
+        for(int i=0; i<my_string.length(); i++){
+            //my_string.indexOf(my_string.charAt(i));
+            if(i==my_string.indexOf(my_string.charAt(i)))
+                answer+=my_string.charAt(i);
+        }
+
+        return answer;
+    }
+}
+````
+````
+class Solution {
+    public String solution(String my_string) {
+        String answer = "";
+        for(int i=0; i<my_string.length(); i++){
+            if(!answer.contains(String.valueOf(my_string.charAt(i)))){
+                answer += my_string.charAt(i);
+            }
+        }
+        return answer;
+    }
+}
+````
+
+
 
 <br>
 <br>
