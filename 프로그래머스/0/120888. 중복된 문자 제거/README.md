@@ -2,6 +2,12 @@
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/120888) 
 
+#### [성능 요약](#-성능-요약)
+#### [문제 설명](#-문제-설명)
+#### [문제 풀이](#-문제-풀이)
+
+<hr>
+
 ### 성능 요약
 
 메모리: 83.1 MB, 시간: 7.66 ms
@@ -17,7 +23,8 @@
 ### 제출 일자
 
 2025년 08월 28일 09:41:13
-
+<br>
+<br>
 ### 문제 설명
 
 <p>문자열 <code>my_string</code>이 매개변수로 주어집니다. <code>my_string</code>에서 중복된 문자를 제거하고 하나의 문자만 남긴 문자열을 return하도록 solution 함수를 완성해주세요.</p>
@@ -69,5 +76,30 @@
 <li>"We are the world"에서 중복된 문자 "e", " ", "r" 들을 제거한 "We arthwold"을 return합니다.</li>
 </ul>
 
+<br>
+<br>
+
+### 문제 풀이
+````
+class Solution {
+    public String solution(String my_string) {
+        String answer = "";
+
+        for(int i = 0; i < my_string.length(); i++){
+            String str = my_string.charAt(i)+"";
+            if(!answer.contains(str)){
+                answer += str;
+            }
+        }
+        return answer;
+    }
+}
+````
+charAt()으로 문자열을 하나씩 저장한다.
+answer에 str이 포함되어 있는지 확인하고 포함되어 있지 않다면 answer에 저장한다.
+
+<br>
+<br>
+<br>
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
