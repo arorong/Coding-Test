@@ -1,6 +1,12 @@
 # [level 0] 모스부호 (1) - 120838 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/120838#qna) 
+🔗 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/120838#qna) 
+
+#### [1. 성능 요약](#성능-요약)
+#### [2. 문제 설명](#문제-설명)
+#### [3. 내 코드](#내-코드)
+
+<hr>
 
 ### 성능 요약
 
@@ -96,5 +102,81 @@
 <li><code>{".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."}</code></li>
 </ul>
 
+<br>
+<br>
+
+### 내 코드
+````
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public String solution(String letter) {
+        Map<String, String> morseMap = new HashMap<>(){
+            {   put(".-","a");
+                put("-...","b");
+                put("-.-.","c");
+                put("-..","d");
+                put(".","e");
+                put("..-.","f");
+                put("--.","g");
+                put("....","h");
+                put("..","i");
+                put(".---","j");
+                put("-.-","k");
+                put(".-..","l");
+                put("--","m");
+                put("-.","n");
+                put("---","o");
+                put(".--.","p");
+                put("--.-","q");
+                put(".-.","r");
+                put("...","s");
+                put("-","t");
+                put("..-","u");
+                put("...-","v");
+                put(".--","w");
+                put("-..-","x");
+                put("-.--","y");
+                put("--..","z");
+             }
+        };
+
+        String answer = "";
+        String[] morse = letter.split(" ");
+        for(String i : morse){
+            answer += morseMap.get(i);
+        }
+
+        return answer;
+    }
+}
+````
+HashMap을 이용해 모스부호와 알파벳을 매핑.<br>
+공백" " 기준으로 토큰화 한다. "... --- ..." → ["...", "---", "..."]<br>
+morseMap.get(i) 결과를 answer에 이어 붙인다.
+<br><br><br>
+
+### 다른 풀이
+````
+class Solution {
+    public String solution(String letter) {
+        String answer = "";
+        String[] morse = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+        String[] word = letter.split(" ");
+
+        for(int i=0;i<word.length;i++){
+            for(int j=0;j<morse.length;j++){
+                if(word[i].equals(morse[j])) answer+=(char)(j+97);
+            }
+        }
+
+        return answer;
+    }
+}
+````
+HashMap을 써보고 싶어서 HashMap으로 풀었던 건데 이 코드가 훨씬 직관적인 것 같다.<br>
+
+<br><br><br><br><br>
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
