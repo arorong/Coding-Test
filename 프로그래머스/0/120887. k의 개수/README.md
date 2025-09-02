@@ -1,6 +1,13 @@
 # [level 0] k의 개수 - 120887 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/120887) 
+🔗 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/120887) <br>
+🔗 [블로그 정리](https://amy-g.tistory.com/368)
+
+#### [1. 성능 요약](#성능-요약)
+#### [2. 문제 설명](#문제-설명)
+#### [3. 내 코드](#내-코드)
+
+<hr>
 
 ### 성능 요약
 
@@ -84,5 +91,39 @@
 <li>3부터 10까지 2는 한 번도 등장하지 않으므로 0을 return 합니다.</li>
 </ul>
 
+
+<br>
+<br>
+
+### 내 코드
+````
+class Solution {
+    public int solution(int i, int j, int k) {
+        int answer = 0;
+ 
+        for (int num = i; num <= j; num++) {
+            int temp = num;
+ 
+            // 숫자를 1자리씩 확인
+            while (temp > 0) {
+                if (temp % 10 == k) {
+                    answer++;
+                }
+                temp /= 10;
+            }
+        }
+ 
+        return answer;
+    }
+}
+````
+for문을 통해 i부터 j까지 순회한다.<br>
+``int temp = num;``는 원래 숫자(num)를 보존하기 위해 복사해서 쓰는 코드이다. for문 돌면서 i부터 j까지 올라가는 숫자. num을 그대로 쓰면서 num/=10을 하면 num 자체가 바뀌어버린다.<br>
+while문은 temp가 0보다 클 때 반복한다. 반복마다 temp % 10으로 마지막 자릿수를 가져와 k와 비교. 같다면 answer를 1 증가시키고, temp /= 10으로 다음 자리로 이동합니다.<br>
+``temp/=10`` while문에서는 자릿수 연산을 진행하기 위해 temp를 매 반복마다 temp /= 10;로 갱신해야 한다. 이 갱신이 없으면 값이 줄지 않아 무한 루프에 빠질 수 있다.
+
+
+
+<br><br><br><br><br>
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
