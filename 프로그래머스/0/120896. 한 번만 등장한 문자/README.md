@@ -1,6 +1,13 @@
 # [level 0] 한 번만 등장한 문자 - 120896 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/120896) 
+🔗 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/120896)<br>
+🔗 [블로그 정리](https://amy-g.tistory.com/368)<br>
+
+#### [1. 성능 요약](#성능-요약)
+#### [2. 문제 설명](#문제-설명)
+#### [3. 내 코드](#내-코드)
+
+<hr>
 
 ### 성능 요약
 
@@ -76,5 +83,43 @@
 <li>"hello"에서 한 번씩 등장한 문자는 "heo"이고 이를 사전 순으로 정렬한 "eho"를 return 합니다.</li>
 </ul>
 
+
+<br>
+<br>
+
+### 내 코드
+````
+import java.util.Arrays;
+
+class Solution {
+    public String solution(String s) {
+        String answer = "";
+
+       String[] sArr = s.split("");
+        Arrays.sort(sArr);
+
+        for(int i = 0; i < sArr.length; i++){
+            int cnt = 0;
+            for(int j = 0; j < sArr.length; j++){
+                if(sArr[i].equals(sArr[j])){
+                    cnt++;
+                }
+            }
+            if(cnt == 1){
+                answer += sArr[i];
+            }
+        }
+
+        return answer;
+    }
+}
+````
+문자열 s를 split()으로 나눠 문자열 배열을 만든 후, 알파벳 순으로 정렬해준다.<br>
+바깥쪽 for문을 통해 전체 sArr 문자배열을 순회하고 안쪽 for문을 통해 sArr[i]가 몇 번 나오는지 세어서 cnt에 추가한다.<br>
+카운트 한 숫자가 1이면 그 문자값을 추가한다.
+
+
+
+<br><br><br><br><br>
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
