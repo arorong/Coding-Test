@@ -1,6 +1,13 @@
 # [level 0] 가까운 수 - 120890 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/120890) 
+🔗 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/120890) <br>
+🔗 [블로그 정리](https://amy-g.tistory.com/380)<br>
+
+#### [1. 성능 요약](#성능-요약)
+#### [2. 문제 설명](#문제-설명)
+#### [3. 내 코드](#내-코드)
+
+<hr>
 
 ### 성능 요약
 
@@ -73,5 +80,55 @@
 
 <p>※ 공지 - 2023년 3월 29일 테스트 케이스가 추가되었습니다. 기존에 제출한 코드가 통과하지 못할 수도 있습니다.</p>
 
+
+<br>
+<br>
+
+### 내 코드
+````
+import java.util.*;
+ 
+class Solution {
+    public int solution(int[] array, int n) {
+        int answer = 0;
+        Arrays.sort(array);
+        
+        for (int i = 0; i < array.length; i++) {
+            if (Math.abs(n - array[0]) > Math.abs(n - array[i])) {
+                array[0] = array[i];
+            }
+        }
+        
+        answer = array[0];
+        
+        return answer;
+    }
+}
+````
+
+<br><br><br>
+
+### 다른 풀이
+````
+import java.util.Arrays;
+class Solution {
+    public int solution(int[] array, int n) {
+        int answer = 0;
+        Arrays.sort(array);
+        for (int i = 0; i < array.length; i++) {
+            if (i == 0 || Math.abs(array[i] - n) < Math.abs(answer - n)) {
+                answer = array[i];
+                if (answer == n) {
+                    break;
+                }
+            }
+        }
+        return answer;
+    }
+}
+````
+[🔗출처](https://sigfriede.tistory.com/230)<br>
+
+<br><br><br><br><br>
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
