@@ -1,6 +1,12 @@
 # [Bronze I] 평균 - 1546 
 
-[문제 링크](https://www.acmicpc.net/problem/1546) 
+[문제 링크](https://www.acmicpc.net/problem/1546) <br>
+
+#### [1. 성능 요약](#성능-요약)
+#### [2. 문제 설명](#문제-설명)
+#### [3. 내 코드](#내-코드)
+
+<hr>
 
 ### 성능 요약
 
@@ -30,3 +36,41 @@
 
  <p>첫째 줄에 새로운 평균을 출력한다. 실제 정답과 출력값의 절대오차 또는 상대오차가 10<sup>-2</sup> 이하이면 정답이다.</p>
 
+
+<br>
+<br>
+
+### 내 코드
+````
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        int[] score = new int[N];
+        int m = 0;
+
+        for (int i = 0; i < score.length; i++) {
+            score[i] = sc.nextInt();
+            if (score[i] > m) {
+                m = score[i];
+            }
+        }
+
+        double sum = 0;
+        for (int i = 0; i < score.length; i++) {
+            sum += (double) score[i] / m * 100;
+        }
+        double avg = sum / N;
+        System.out.print(avg);
+    }
+}
+````
+
+처음에 합계 낼 때 ``sum += (double) score[i] / m * 100;``이렇게 코드를 작성했었다. 
+실행을 하니 값이 완전 다르게 나왔는데, 왜 그런고하니 score와 m이 모두 int인데 int는 정수형이라 계산을 하면 소수점 이하는 버리기 때문에 만약 40/80을 하면 값은 0이 된다. 그렇기 때문에 결과값이 다르게 나왔던 것! 계산을 할때 강제로 double로 형변환 해주거나 score와 m을 처음부터 double로 바꿔준다.
+
+<br>
+<br>
+<br>
+<br>
+<br>
