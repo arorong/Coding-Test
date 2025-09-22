@@ -1,6 +1,12 @@
 # [Bronze II] 바구니 뒤집기 - 10811 
 
-[문제 링크](https://www.acmicpc.net/problem/10811) 
+[문제 링크](https://www.acmicpc.net/problem/10811) <br>
+
+#### [1. 성능 요약](#성능-요약)
+#### [2. 문제 설명](#문제-설명)
+#### [3. 내 코드](#내-코드)
+
+<hr>
 
 ### 성능 요약
 
@@ -34,3 +40,51 @@
 
  <p>모든 순서를 바꾼 다음에, 가장 왼쪽에 있는 바구니부터 바구니에 적혀있는 순서를 공백으로 구분해 출력한다.</p>
 
+
+<br>
+<br>
+
+### 내 코드
+````
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int N = sc.nextInt();
+        int M = sc.nextInt();
+        int[] basket = new int[N];
+        
+        for (int i = 0; i < N; i++) { //바구니 내용 채우기
+            basket[i] = i + 1;
+        }
+
+        for (int i = 0; i < M; i++) { //횟수만큼 순회
+            int a = sc.nextInt() - 1; //시작 바구니 번호. 배열 0부터 시작하기 때문에 -1 해줌
+            int b = sc.nextInt() - 1; // 끝 바구니 번호
+
+            while (a < b) {
+                int temp = basket[a];
+                basket[a++] = basket[b]; //대입과 동시에 증가
+                basket[b--] = temp; //대입과 동시에 감소
+            }
+        }
+        sc.close();
+
+        for (int result:basket)
+            System.out.print(result + " ");
+    }
+}
+````
+진심... 문제 이해하는데 은근 오래 걸림. 문제 가독성 미쳤어~^^ <br>
+``도현이는 앞으로 M번 바구니의 순서를 역순으로 만들려고 한다. `` 이거 진짜 뭔 소린가 했다. M번이 1번 바구니, 2번 바구니 이게 아니라 **바구니 순서를 M번 역순하겠다.** 라는 뜻이었아. 뒤집기 횟수...하 여튼 이 문제 좀 힘들었네..<br>
+투 포인터 (Two Pointer) 기법으로 배열을 뒤집는다.<br>
+*구간의 양 끝에서 시작하는 포인터 a, b를 가운데로 좁혀가며 원소를 맞바꿔 뒤집는다.<br>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
