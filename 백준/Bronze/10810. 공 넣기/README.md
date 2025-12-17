@@ -1,6 +1,15 @@
 # [Bronze III] 공 넣기 - 10810 
 
-[문제 링크](https://www.acmicpc.net/problem/10810) 
+🔗 [문제 링크](https://www.acmicpc.net/problem/10810)  <br>
+
+#### [1. 성능 요약](#성능-요약)
+#### [2. 문제 설명](#문제-설명)
+#### [3. 내 코드](#내-코드)
+#### [사용된 자료구조](#사용된-자료구조)
+
+<hr>
+
+
 
 ### 성능 요약
 
@@ -33,4 +42,56 @@
 ### 출력 
 
  <p>1번 바구니부터 N번 바구니에 들어있는 공의 번호를 공백으로 구분해 출력한다. 공이 들어있지 않은 바구니는 0을 출력한다.</p>
+
+
+<br>
+<br>
+
+### 내 코드
+````
+import java.util.*;
+ 
+public class Main {
+ 
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int N = sc.nextInt(); // 바구니 개수
+		int M = sc.nextInt(); // 공을 넣는 횟수
+		int[] bascket = new int[N];
+ 
+		for(int x = 0; x < M; x++){ // 공을 M 번 넣는 for문
+			int i = sc.nextInt(); // 시작 바구니 번호
+			int j = sc.nextInt(); // 끝 바구니 번호
+			int k = sc.nextInt(); // 넣을 공 번호
+ 
+			// i부터 j까지 바구니에 k번 공을 넣는다
+			// 배열은 0부터 시작하므로 i-1부터 j-1까지
+			for(int y = i - 1; y <= j - 1; y++){
+				bascket[y] = k; // 해당 범위에 공 번호 k 넣기
+			}
+		}
+		
+		//바구니에 차례로 접근해 들어 있는 공 번호를 출력
+		for(int y = 0; y < N; y++){
+			System.out.print(bascket[y] + " ");
+		}
+	}
+}
+````
+<br><br>
+일단 문제 이해가 어려운데; M번 공을 넣는다...? 뭔 소린가 했음; M번 공이 아니라 공을 넣는 횟수가 M번이다~ 뒤엔 또 i, j, k가 있는데 그 중 K가 공의 번호였다;
+<br>
+
+
+
+<br><br><br>
+
+
+
+### 사용된 자료구조
+- 구현
+- 시뮬레이션
+<br>
+<br>
+<br>
 
