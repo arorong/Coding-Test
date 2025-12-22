@@ -1,6 +1,12 @@
 # [level 0] 마지막 두 원소 - 181927 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181927) 
+🔗 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181927) <br>
+
+#### [1. 성능 요약](#성능-요약)
+#### [2. 문제 설명](#문제-설명)
+#### [3. 내 코드](#내-코드)
+<hr>
+
 
 ### 성능 요약
 
@@ -65,6 +71,38 @@
 <ul>
 <li>마지막 원소인 5가 그전 원소인 7보다 크지 않기 때문에 5의 두 배인 10을 추가해 return합니다.</li>
 </ul>
+
+
+<br>
+<br>
+
+### 내 코드
+````
+class Solution {
+    public int[] solution(int[] num_list) {
+        int[] arr = new int[num_list.length + 1];
+
+        for(int i = 0; i < num_list.length; i++){
+            arr[i] = num_list[i];
+        }
+
+        if(arr[num_list.length - 1] > arr[num_list.length - 2]){
+            arr[num_list.length] = arr[num_list.length - 1] - arr[num_list.length - 2];
+        } else{
+            arr[num_list.length] = arr[num_list.length - 1] *2;
+        }
+
+        return arr;
+    }
+}
+````
+<br><br>
+처음에 기존 배열 복사를 안 했다. 그리고 처음에 i가 0일 때 -1을 하면 index[-1]이 된다는 것을 고려하지 않아 ArrayIndexOutOfBoundsException 에러가 발생했었다!!<br>
+진정하고 차근차근 다시 해봄.
+
+<br>
+<br>
+<br>
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
