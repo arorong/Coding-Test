@@ -1,6 +1,14 @@
 # [level 0] 주사위 게임 2 - 181930 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181930#qna) 
+🔗[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181930#qna)  <br>
+
+#### [1. 성능 요약](#성능-요약)
+#### [2. 문제 설명](#문제-설명)
+#### [3. 내 코드](#내-코드)
+#### [4. 다른 풀이](#다른-풀이)
+
+<hr>
+
 
 ### 성능 요약
 
@@ -92,4 +100,81 @@
 </ul>
 
 
-> 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+<br>
+<br>
+
+### 내 코드
+````
+class Solution {
+    public int solution(int a, int b, int c) {
+        int answer = 0;
+
+        if(a != b && b != c && a != c){
+            answer = a+b+c;
+        } else if(a == b && a != c|| a == c && a != b || b == c && b != a ){
+            answer = (a + b + c) * ((int)Math.pow(a, 2) + (int)Math.pow(b, 2) + (int)Math.pow(c, 2));
+        } else{
+            answer =  (a + b + c) * ((int)Math.pow(a, 2) + (int)Math.pow(b, 2) + (int)Math.pow(c, 2)) * ((int)Math.pow(a, 3) + (int)Math.pow(b, 3) + (int)Math.pow(c, 3));
+        }
+
+        return answer;
+    }
+}
+````
+조건문을 이용해 풀긴 했는데 가독성이 너무 떨어진다.<br>
+<br><br>
+### 다른 풀이
+프로그래머스에서 다른 풀이들을 찾아봤다.<br>
+````
+class Solution {
+    public int solution(int a, int b, int c) {
+        int answer = a + b + c;
+
+        if (a == b || b == c || a == c) {
+            answer *= (a * a + b * b + c * c);
+        }
+
+        if (a == b && b == c) {
+            answer *= (a * a * a + b * b * b + c * c * c);
+        }
+
+        return answer;
+    }
+}
+````
+기본값으로 a+b+c 세 수의 합을 만든다. 그 다음 두 숫자가 같은 경우, 세 숫자가 같은 경우를 계산한다.
+
+````
+class Solution {
+    public int solution(int a, int b, int c) {
+        int answer = 1;
+
+        int count = 1;
+        if(a == b || a == c || b == c) {
+            count++;
+        }
+
+        if(a == b && b == c) {
+            count++;
+        }
+
+        for(int i = 1; i <= count; i++) {
+            answer *= (pow(a,i)+pow(b,i)+pow(c,i));
+        }
+
+        return answer;
+    }
+
+    private int pow(int a, int b) {
+        if(b == 0) return 1;
+        return a * pow(a, b-1);
+    }
+}
+````
+
+<br>
+<br>
+<br>
+
+
+프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
