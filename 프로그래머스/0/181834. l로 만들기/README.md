@@ -1,6 +1,14 @@
 # [level 0] l로 만들기 - 181834 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181834) 
+🔗[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181834) <br> 
+
+#### [1. 성능 요약](#성능-요약)
+#### [2. 문제 설명](#문제-설명)
+#### [3. 내 코드](#내-코드)
+#### [4. 다른 풀이](#다른-풀이)
+
+<hr>
+
 
 ### 성능 요약
 
@@ -70,6 +78,47 @@
 <li>그 외의 문자는 모두 "l"보다 앞서지 않는 문자입니다. 따라서 바꾸지 않습니다.</li>
 <li>따라서 "llnnllllmm"을 return 합니다.</li>
 </ul>
+
+
+<br>
+<br>
+
+### 내 코드
+````
+class Solution {
+    public String solution(String myString) {
+        String answer = "";
+
+        for(int i = 0; i < myString.length(); i++){
+            char a = myString.charAt(i);
+            if(a < 'l'){
+                answer += 'l';
+            } else{
+                answer += a;
+            }
+        }
+
+        return answer;
+    }
+}
+````
+i 요소의 아스키코드가 'l'의 아스키코드(108) 보다 작으면 'l'로 교체되고 그렇지 않으면 i 요소 그대로 더해준다.
+<br>
+<br><br>
+
+### 다른 풀이
+정규식 표현으로 푸는 방법도 있다.
+````
+class Solution {
+    public String solution(String myString) {
+        return myString.replaceAll("[^l-z]", "l");
+    }
+}
+````
+
+<br>
+<br>
+<br>
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
